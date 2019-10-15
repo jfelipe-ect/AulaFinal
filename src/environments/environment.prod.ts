@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://i2241-agenda-api.herokuapp.com/'
+  apiUrl: 'https://a9261848-agenda-api.herokuapp.com/'
 };
