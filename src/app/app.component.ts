@@ -13,37 +13,33 @@ class Contato {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   contato = new Contato();
-
   contatos = [];
 
-  constructor(private service: ContatoService){}
+  constructor(private service: ContatoService) {}
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.buscaContatos();
   }
 
   buscaContatos() {
     this.service.buscaTodos().then(dados => {
       this.contatos = dados;
-    })
+    });
   }
 
   salvar(formContato: NgForm) {
-
     this.contato.nome = formContato.value.nome;
     this.contato.fone = formContato.value.fone;
 
     this.service.salvaContato(this.contato)
-    .then(c => {
-      alert(`Contato ${c.nome} salvo!!!`);
-      this.buscaContatos();
-    });
+      .then(c => {
+        this.buscaContatos();
+      });
 
     this.contato = new Contato();
-
   }
 
   editar(id: number) {
